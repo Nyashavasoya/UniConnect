@@ -54,7 +54,7 @@ const Post = ({post}) => {
 
 
   return (
-    <div className="mb-4 bg-black text-white p-6 rounded-lg shadow-md" key={key}>
+    <div className="mb-4 bg-black text-white p-6 rounded-lg shadow-md" key={post._id}>
       <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
       <p className="mb-4">{post.caption}</p>
       <div className="flex items-center space-x-4">

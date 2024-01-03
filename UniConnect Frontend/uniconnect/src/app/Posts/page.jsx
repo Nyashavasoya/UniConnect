@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import NewPost from '../NewPost/page';
 
 const Posts = () => {
   const [posts, setPosts] = useState([
@@ -72,37 +73,55 @@ const Posts = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-3xl font-bold mb-4">Posts</h2>
-      <Link href = "/NewPost">Create a Post</Link>
-      {posts.map((post) => (
-        <div key={post._id} className="className={`mb-4 bg-black text-white p-6 rounded-lg shadow-md ${index !== posts.length - 1 ? 'mb-8 border-b border-white' : ''}`}">
-          <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
-          <p className="mb-4">{post.caption}</p>
-          <div className="flex items-center space-x-4">
-            <button
-              className="bg-blue-500 text-black px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
-              onClick={() => handleLike(post._id)}
-            >
-              Like
-            </button>
-            <button
-              className="bg-red-500 text-black px-4 py-2 rounded hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
-              onClick={() => handleDislike(post._id)}
-            >
-              Dislike
-            </button>
-          </div>
-          <div className="mt-4">
-            <div className="mt-4">
-            <Link href={`/Posts/${post._id}`}>
-              Comment
-            </Link>
-            </div>
-          </div>
+    <>
+
+<div className="flex h-full">
+<div className="items-center space-y-10 w-32 min-h-screen flex flex-col right-sidebar-container bg-gray-800 text-white p-4 border-l border-gray-600">
+  <Link href="/login">
+    <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Login</button>
+  </Link>
+  <Link href="/register">
+    <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Register</button>
+  </Link>
+  <Link href="/logout">
+    <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Logout</button>
+  </Link>
+</div>
+
+
+  <div className="w-2/3 px-10 min-h-screen">
+    {/* Your main content goes here */}
+      <div className="bg-black text-white space-x-10">
+       <h2 className="text-3xl font-bold mb-4 px-10 py-5">Posts</h2>
+        {posts.map((post, index) => (
+           <div key={post._id} className="border-b border-white py-10">
+             <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
+              <p className="text-base mb-4">{post.caption}</p>
+               <div className="flex items-center space-x-10"> 
+               <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleLike(post._id)} > Like </button>
+                <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDislike(post._id)} > Dislike </button>
+                 </div>
+                  <div className="mt-4">
+                   <div className="flex justify-start">
+                     <Link href={`/Posts/${post._id}`}>
+                     <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"> Comment </button>
+                      </Link>
+                      </div>
+                       </div>
+                        </div>
+                         ))}
+                          </div>
         </div>
-      ))}
-    </div>
+        <div className='w-1/3 px-10 min-h-screen'>
+        <div className='flex justify-center'>
+          <NewPost />
+        </div>
+        </div>
+  </div>
+
+
+
+    </>
   );
 };
 
