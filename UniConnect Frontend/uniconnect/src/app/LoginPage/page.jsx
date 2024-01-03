@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
 
@@ -26,8 +27,9 @@ const LoginPage = () => {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #aaa', marginBottom: '10px' }} />
         </label>
         <button onClick={Login} style={{ backgroundColor: '#3498db', color: '#fff', padding: '12px', borderRadius: '8px', border: 'none', cursor: 'pointer', width: '100%', fontSize: '16px' }}>Sign In</button>
-        <div style={{ marginTop: '15px', textAlign: 'center' }}>
+        <div style={{ marginTop: '15px', textAlign: 'center' , display: 'flex', justifyContent: 'space-between' }}>
           <Link href="/LandingPage">Forgot Password</Link>
+          <Link href="/Register">Register</Link>
         </div>
       </div>
     </div>
