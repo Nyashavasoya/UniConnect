@@ -7,7 +7,6 @@ import './styles/NewPost.css';
 
 const NewPost = () => {
     const [title, setTitle] = useState('');
-    const [institute, setInstitute] = useState('');
     const [description, setDescription] = useState('');
     const [file, setFile] = useState(null);
   
@@ -18,7 +17,6 @@ const NewPost = () => {
     // Create a FormData object to handle file uploads
     const formData = new FormData();
     formData.append('title', title);
-    formData.append('institute', institute);
     formData.append('description', description);
     formData.append('file', file);
 
@@ -27,7 +25,6 @@ const NewPost = () => {
 
     // Reset form fields
     setTitle('');
-    setInstitute('');
     setDescription('');
     setFile(null);
   };
@@ -39,10 +36,6 @@ const NewPost = () => {
         <label>
           Title:
           <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </label>
-        <label>
-          Institute:
-          <input type="text" value={institute} onChange={(e) => setInstitute(e.target.value)} />
         </label>
         <label>
           Description:

@@ -3,43 +3,62 @@
 import { useState, useEffect } from 'react';
 
 const Posts = () => {
- const [posts, setPosts] = useState([]);
- const [username, setUsername] = useState('');
- const [institute, setInstitute] = useState('');
- const [content, setContent] = useState('');
+  const [posts, setPosts] = useState([
+    {
+      username: '60c8ce847857f52250e4f2e1',
+      caption: 'This is a sample post caption.',
+      image: {
+        public_id: 'sample_public_id',
+        url: 'https://example.com/sample_image.jpg',
+      },
+      createdAt: new Date(),
+      likes: 0,
+      dislikes: 0,
+      comments: ['Comment 1', 'Comment 2'],
+    }
+    
+  ]);
 
- useEffect(() => {
-    const getPosts = async () => {
-      const response = await fetch('/api/posts');
+  const [newComment, setNewComment] = useState('');
 
-      if (response.ok) {
-        const data = await response.json();
-        setPosts(data);
-      } else {
-        alert('Error loading posts');
-      }
-    };
+  const handleComment = async (postId) => {
+    if (newComment.trim() === '') {
+      // Don't post empty comments
+      return;
+    }
 
-    getPosts();
- }, []);
-
- const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const response = await fetch('/api/posts', {
-      method: 'POST',
+    const response = await fetch(`/api/posts/${postId}/comment`, {
+      method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, institute, content }),
+      body: JSON.stringify({ comment: newComment }),
     });
 
     if (response.ok) {
-      setContent('');
       getPosts();
+      setNewComment(''); // Clear the comment input field after posting
     } else {
-      const data = await response.json();
-      alert(data.message);
+      alert('Error commenting on post');
     }
- };
+  };
+  
+
+ const getPosts = async () => {
+  const response = await fetch('/api/posts');
+
+  if (response.ok) {
+    const data = await response.json();
+    setPosts(data);
+  } else {
+    alert('Error loading posts');
+  }
+};
+
+ useEffect(() => {
+
+    getPosts();
+
+ }, [posts]);
+
 
  const handleLike = async (postId) => {
     const response = await fetch(`/api/posts/${postId}/like`, {
@@ -65,19 +84,6 @@ const Posts = () => {
     }
  };
 
- const handleComment = async (postId, comment) => {
-    const response = await fetch(`/api/posts/${postId}/comment`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ comment }),
-    });
-
-    if (response.ok) {
-      getPosts();
-    } else {
-      alert('Error commenting on post');
-    }
- };
 
  return (
     <div>
@@ -85,12 +91,25 @@ const Posts = () => {
       {posts.map((post) => (
         <div key={post._id}>
           <h3>{post.username}</h3>
-          <p>{post.content}</p>
-          <p>Likes: {post.likes}</p>
-          <p>Dislikes: {post.dislikes}</p>
+          <p>{post.caption}</p>
           <button onClick={() => handleLike(post._id)}>Like</button>
           <button onClick={() => handleDislike(post._id)}>Dislike</button>
-          <button onClick={() => handleComment(post._id, prompt('Enter your comment'))}>Comment</button>
+          <div className="comment-section">
+            {post.comments.map((comment, index) => (
+              <div className="comment" key={index}>
+                {comment}
+              </div>
+            ))}
+            <div className="comment">
+              <input
+                type="text"
+                placeholder="Add a comment..."
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+              />
+              <button onClick={() => handleComment(post._id)}>Post</button>
+            </div>
+          </div>
         </div>
       ))}
     </div>
