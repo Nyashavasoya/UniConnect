@@ -15,13 +15,13 @@ app.use(cookieParser);
 
 //importing routes 
 //post 
-const post = require("./routes/post");
+// const post = require("./routes/post");
 // user
 const user = require("./routes/user");
 
 //using routes 
 //post
-app.use("/api",post);
+// app.use("/api",post);
 // user
 app.use("/api",user);
 
