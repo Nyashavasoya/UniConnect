@@ -34,42 +34,42 @@ const Posts = () => {
 
 
   const getPosts = async () => {
-    const response = await fetch('/api/Posts');
+    // const response = await fetch('/api/Posts');
 
-    if (response.ok) {
-      const data = await response.json();
-      setPosts(data);
-    } else {
-      alert('Error loading posts');
-    }
+    // if (response.ok) {
+    //   const data = await response.json();
+    //   setPosts(data);
+    // } else {
+    //   alert('Error loading posts');
+    // }
   };
 
   useEffect(() => {
     getPosts();
-  }, [posts]);
+  }, []);
 
   const handleLike = async (postId) => {
-    const response = await fetch(`/api/Posts/${postId}/like`, {
-      method: 'PUT',
-    });
+    // const response = await fetch(`/api/Posts/${postId}/like`, {
+    //   method: 'PUT',
+    // });
 
-    if (response.ok) {
-      getPosts();
-    } else {
-      alert('Error liking post');
-    }
+    // if (response.ok) {
+    //   getPosts();
+    // } else {
+    //   alert('Error liking post');
+    // }
   };
 
   const handleDislike = async (postId) => {
-    const response = await fetch(`/api/Posts/${postId}/dislike`, {
-      method: 'PUT',
-    });
+    // const response = await fetch(`/api/Posts/${postId}/dislike`, {
+    //   method: 'PUT',
+    // });
 
-    if (response.ok) {
-      getPosts();
-    } else {
-      alert('Error disliking post');
-    }
+    // if (response.ok) {
+    //   getPosts();
+    // } else {
+    //   alert('Error disliking post');
+    // }
   };
 
   return (
@@ -77,22 +77,28 @@ const Posts = () => {
 
 <div className="flex h-full">
 <div className="items-center space-y-10 w-32 min-h-screen flex flex-col right-sidebar-container bg-gray-800 text-white p-4 border-l border-gray-600">
-  <Link href="/login">
+  <Link href="/LoginPage">
     <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Login</button>
   </Link>
-  <Link href="/register">
+  <Link href="/Register">
     <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Register</button>
   </Link>
-  <Link href="/logout">
+  {/* <Link href="/logout">
     <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Logout</button>
-  </Link>
+  </Link> */}
 </div>
 
 
   <div className="w-2/3 px-10 min-h-screen">
-    {/* Your main content goes here */}
       <div className="bg-black text-white space-x-10">
-       <h2 className="text-3xl font-bold mb-4 px-10 py-5">Posts</h2>
+       <div className="text-3xl font-bold mb-4 px-10 py-5 flex flex-row justify-between items-center">
+        <div className="text-white">
+          Posts
+        </div>
+        <div className="text-white">
+        <Link href="/Search">Click to Search</Link>
+        </div>
+       </div>
         {posts.map((post, index) => (
            <div key={post._id} className="border-b border-white py-10">
              <h3 className="text-xl font-semibold mb-2">{post.username}</h3>

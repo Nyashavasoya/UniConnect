@@ -54,48 +54,40 @@ const Post = ({post}) => {
 
 
   return (
-    <div className="mb-4 bg-black text-white p-6 rounded-lg shadow-md" key={post._id}>
-      <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
-      <p className="mb-4">{post.caption}</p>
-      <div className="flex items-center space-x-4">
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
-          onClick={() => handleLike(postId)}
-        >
-          Like
-        </button>
-        <button
-          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none focus:shadow-outline-red active:bg-red-800"
-          onClick={() => handleDislike(postId)}
-        >
-          Dislike
-        </button>
-      </div>
-        <div className="mt-4">
-          {post.comments.map((comment, index) => (
-            <div key={index} className="mb-2 p-2 bg-gray-100 rounded-lg text-black">
-              {comment}
-            </div>
-          ))}
-          <div className="flex mt-2 text-black">
-          <div className="flex mt-2 text-black">
-              <input
-                type="text"
-                placeholder="Add a comment..."
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
-              />
-              <button
-                onClick={() => handleComment(post._id)}
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
-              >
-                Post
-              </button>
-            </div>
+    <><div key={post._id} className="border-b border-white py-10">
+          <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
+          <p className="text-base mb-4">{post.caption}</p>
+          <div className="flex items-center space-x-10">
+              <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleLike(post._id)}> Like </button>
+              <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDislike(post._id)}> Dislike </button>
           </div>
-        </div>
-    </div>
+         
+          <div className="mt-4">
+              {post.comments.map((comment, index) => (
+                  <div key={index} className="mb-2 p-2 rounded-lg text-white bg-gray-800 w-auto">
+                      {comment}
+                  </div>
+              ))}
+              <div className="flex mt-2 text-black">
+                  <div className="flex mt-2 text-black space-x-10">
+                      <input
+                          type="text"
+                          placeholder="Add a comment..."
+                          value={newComment}
+                          onChange={(e) => setNewComment(e.target.value)}
+                          className=" w-full border border-gray-300 rounded px-3 py-2 text-white bg-gray-800" />
+                      <button
+                          onClick={() => handleComment(post._id)}
+                          className="bg-indigo-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:shadow-outline-blue active:bg-blue-800"
+                      >
+                          Post
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+          </>
+   
   );
 };
 
