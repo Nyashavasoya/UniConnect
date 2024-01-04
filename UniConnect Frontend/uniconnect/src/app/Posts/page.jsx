@@ -2,9 +2,19 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import NewPost from '../NewPost/page';
+import { fetchPosts } from '@/utils/api';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import CustomPopup from '@/components/customPop';
+import { FaSearch } from "react-icons/fa";
+import { FaRegSquarePlus } from "react-icons/fa6";
+
 
 const Posts = () => {
+  const router = useRouter();
+
+  const [showPopup, setShowPopup] = useState(false);
+
   const [posts, setPosts] = useState([
     {
       username: '60c8ce847857f52250e4f2e1',
@@ -34,14 +44,8 @@ const Posts = () => {
 
 
   const getPosts = async () => {
-    // const response = await fetch('/api/Posts');
-
-    // if (response.ok) {
-    //   const data = await response.json();
-    //   setPosts(data);
-    // } else {
-    //   alert('Error loading posts');
-    // }
+    const fetchedPosts = await fetchPosts();
+    setPosts(fetchedPosts);
   };
 
   useEffect(() => {
@@ -49,54 +53,69 @@ const Posts = () => {
   }, []);
 
   const handleLike = async (postId) => {
-    // const response = await fetch(`/api/Posts/${postId}/like`, {
-    //   method: 'PUT',
-    // });
-
-    // if (response.ok) {
-    //   getPosts();
-    // } else {
-    //   alert('Error liking post');
-    // }
+    const response = await axios(`/api/posts/${postId}/like`, {
+      method: "PUT",
+    })
+    if(response.ok){
+      getPosts();
+    }
+    else{
+      alert('error liking post');
+    }
   };
 
   const handleDislike = async (postId) => {
-    // const response = await fetch(`/api/Posts/${postId}/dislike`, {
-    //   method: 'PUT',
-    // });
+    const response = await axios(`/api/Posts/${postId}/dislike`, {
+      method: 'PUT',
+    });
 
-    // if (response.ok) {
-    //   getPosts();
-    // } else {
-    //   alert('Error disliking post');
-    // }
+    if (response.ok) {
+      getPosts();
+    } else {
+      alert('Error disliking post');
+    }
   };
+
+  const handleLogOut = () => {
+    setShowPopup(true);   
+  }
+
+  const handleCancel = () => {
+    setShowPopup(false);
+  }
+
+  const handleConfirmLogout = () => {
+    setShowPopup(false);
+    router.push('/');
+  }
 
   return (
     <>
+  <div>
+    <div>
+    <nav className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-black text-white">
+      <div className="flex items-center space-x-4">
+        <img src="/logo.png" alt="UniConnect Logo" className="h-16" />
+        <h1 className="text-3xl font-bold">UniConnect</h1>
+      </div>
+      <div className="flex items-center space-x-8">
+        <Link className="hover:text-indigo-700  md:my-0 my-12 font-semibold text-lg " href="/Search">
+        <FaSearch fontSize={24}/>
+        </Link>
+        <Link className="hover:text-indigo-700 md:mr-12 md:my-0 my-12 font-semibold text-lg " href="/NewPost">
+        <FaRegSquarePlus fontSize={30}/>
+        </Link>
 
-<div className="flex h-full bg-black">
-<div className="items-center space-y-10 w-32 min-h-screen flex flex-col right-sidebar-container bg-gray-800 text-white p-4 border-l border-gray-600">
-  <Link href="/LoginPage">
-    <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Login</button>
-  </Link>
-  <Link href="/Register">
-    <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Register</button>
-  </Link>
-  {/* <Link href="/logout">
-    <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Logout</button>
-  </Link> */}
-</div>
-
-
-  <div className="w-2/3 px-10 min-h-screen">
+        <button onClick={handleLogOut} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Logout</button>
+          <CustomPopup isOpen={showPopup} onClose={handleCancel} onConfirm={handleConfirmLogout}/>
+      </div>
+    </nav>
+    </div>
+    <div className="w-full px-10 min-h-screen">
       <div className="bg-black text-white space-x-10">
        <div className="text-3xl font-bold mb-4 px-10 py-5 flex flex-row justify-between items-center">
         <div className="text-white">
           Posts
-        </div>
-        <div className="text-white">
-        <Link href="/Search">Click to Search</Link>
         </div>
        </div>
         {posts.map((post, index) => (
@@ -104,13 +123,13 @@ const Posts = () => {
              <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
               <p className="text-base mb-4">{post.caption}</p>
                <div className="flex items-center space-x-10"> 
-               <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleLike(post._id)} > Like </button>
-                <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDislike(post._id)} > Dislike </button>
+               <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleLike(post._id)} > Like </button>
+                <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDislike(post._id)} > Dislike </button>
                  </div>
                   <div className="mt-4">
                    <div className="flex justify-start">
                      <Link href={`/Posts/${post._id}`}>
-                     <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"> Comment </button>
+                     <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"> Comment </button>
                       </Link>
                       </div>
                        </div>
@@ -118,15 +137,8 @@ const Posts = () => {
                          ))}
                           </div>
         </div>
-        <div className='w-1/3 px-10 min-h-screen'>
-        <div className='flex justify-center'>
-          <NewPost />
-        </div>
-        </div>
+
   </div>
-
-
-
     </>
   );
 };

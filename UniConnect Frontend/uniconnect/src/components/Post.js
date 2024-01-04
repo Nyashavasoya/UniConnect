@@ -58,8 +58,8 @@ const Post = ({post}) => {
           <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
           <p className="text-base mb-4">{post.caption}</p>
           <div className="flex items-center space-x-10">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleLike(post._id)}> Like </button>
-              <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDislike(post._id)}> Dislike </button>
+              <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleLike(post._id)}> Like </button>
+              <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDislike(post._id)}> Dislike </button>
           </div>
          
           <div className="mt-4">
