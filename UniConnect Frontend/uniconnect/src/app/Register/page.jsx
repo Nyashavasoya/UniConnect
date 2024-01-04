@@ -5,21 +5,31 @@ import Link from 'next/link';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [institute, setInstitute] = useState('');
 
 
 
-  const handleSignup = () => {
-
-    console.log('Signing up with:', { username, password, file });
+  const handleSignup = async () => {
+    e.preventDefault();
+    try{
+      const response = await axios.post('/register', {
+        username, email, password, institute
+      })
+    }
+    catch (err){
+      console.log(err);
+    }
 
   };
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',   background: `url('/registerback.png')`,
     backgroundSize: 'cover' }}>
-      <div className='backdrop-blur-xl  bg-black/70' style={{ width: '400px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
+      <div className='backdrop-blur-xl  bg-black/70' style={{ width: '600px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
         <h1 style={{ textAlign: 'center', marginBottom: '20px', color: 'white', fontSize: '48px', fontWeight: 'bold' }}>Sign Up</h1>
-       
+
+       <form method='POST'>
         <label style={{ display: 'block', marginBottom: '20px', color: 'white', fontWeight: 'bold' }}>
           Username 
           <input
@@ -27,6 +37,28 @@ const Register = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter your username"
+            style={{
+              width: '100%',
+              padding: '10px',
+              borderRadius: '8px',
+              border: '2px solid transparent ',
+              borderColor: 'indigo',
+              marginTop: '10px',
+              marginBottom: '10px',
+              backgroundColor: 'black',
+              color: 'white',
+              outline: 'none',
+              transition: 'border-color 0.3s',
+            }}
+          />
+        </label>
+        <label style={{ display: 'block', marginBottom: '20px', color: 'white', fontWeight: 'bold' }}>
+          Email 
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
             style={{
               width: '100%',
               padding: '10px',
@@ -64,6 +96,28 @@ const Register = () => {
             }}
           />
         </label>
+            <label style={{ display: 'block', marginBottom: '20px', color: 'white', fontWeight: 'bold' }}>
+              Institute 
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setInstitute(e.target.value)}
+                placeholder="Enter your Institute Name"
+                style={{
+                  width: '100%',
+                  padding: '10px',
+                  borderRadius: '8px',
+                  border: '2px solid transparent ',
+                  borderColor: 'indigo',
+                  marginTop: '10px',
+                  marginBottom: '10px',
+                  backgroundColor: 'black',
+                  color: 'white',
+                  outline: 'none',
+                  transition: 'border-color 0.3s',
+                }}
+              />
+            </label>
         <button className='accent-indigo-500'
           onClick={handleSignup}
           style={{
@@ -85,6 +139,7 @@ const Register = () => {
             Login
           </Link>
         </div>
+        </form>
       </div>
     </div>
   );
