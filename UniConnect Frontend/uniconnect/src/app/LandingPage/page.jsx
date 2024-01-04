@@ -15,9 +15,9 @@ const LandingPage = () => {
           <p className="text-gray-500 text-xl font-semibold">Lodge your grievances and gain support from your peers!</p><br/><br/><br/>
            <div className="flex space-x-8">
            <Link href="/LoginPage">
-           <button className="bg-indigo-500 text-white px-6 py-3 rounded-full">
+           <button className="bg-indigo-500 text-white px-6 py-3 rounded-full font-semibold">
               Get Started</button></Link> 
-            <button className="border border-indigo-500 text-indigo-500 px-6 py-3 rounded-full">View your Uni</button>
+            <button className="border border-indigo-500 text-indigo-500 px-6 py-3 font-semibold rounded-full">View your Uni</button>
           </div>
         </div>
 
