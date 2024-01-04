@@ -1,5 +1,11 @@
+import axios from "axios";
+
 export async function fetchPosts() {
-    const res = await fetch('http://localhost:4000/post');
-    const posts = await res.json();
-    return posts;
-  }  
+  try {
+    const response = await axios.get('http://localhost:4000/post');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    throw error;
+  }
+}
