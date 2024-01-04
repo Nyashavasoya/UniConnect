@@ -12,7 +12,7 @@ const NewPost = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
   
-      const response = await axios.post('/post/upload', {
+      const response = await axios.post('http://localhost:4000/post/upload', {
           title: title,
           description: description,
           file: file

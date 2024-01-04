@@ -11,7 +11,7 @@ const LoginPage = () => {
     e.preventDefault();
 
    try {
-    const response = await axios.post('/login', {
+    const response = await axios.post('http://localhost:4000/login', {
       username: username, password: password
     })
     if(response.status === 400 || username){
