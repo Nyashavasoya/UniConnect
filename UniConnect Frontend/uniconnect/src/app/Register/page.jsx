@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -14,13 +15,16 @@ const Register = () => {
     e.preventDefault();
     try{
       const response = await axios.post('/register', {
-        username, email, password, institute
+        username: username, email: email, password: password, institute: institute
       })
+      if(response.status === 400 ){
+        window.alert("User already exists");
+        console.log("user already exists");
+      }
     }
     catch (err){
       console.log(err);
     }
-
   };
 
   return (

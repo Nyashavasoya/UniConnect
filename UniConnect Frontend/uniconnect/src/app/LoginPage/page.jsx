@@ -12,7 +12,7 @@ const LoginPage = () => {
 
    try {
     const response = await axios.post('/login', {
-      username, password
+      username: username, password: password
     })
     if(response.status === 400 || username){
       window.alert("Invalid Username or Password");
