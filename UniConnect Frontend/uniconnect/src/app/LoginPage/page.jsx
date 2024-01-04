@@ -25,23 +25,22 @@ const LoginPage = () => {
   };
 
   return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',   background: `url('/registerback.png')`,
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',   background: `url('/WallP.jpg')`,
       backgroundSize: 'cover' }}>
-        <div className='backdrop-blur-sm  bg-black/70' style={{ width: '500px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
+        <div className='backdrop-blur-sm  bg-black/70' style={{ width: '400px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
           <h1 style={{ textAlign: 'center', marginBottom: '20px', color: 'white', fontSize: '48px', fontWeight: 'bold' }}>Sign In</h1>
         <form method='POST'>
         <label style={{ 
           display: 'block', 
-          marginBottom: '15px', 
+          marginBottom: '8px', 
           color: 'white', 
           fontWeight: 'bold' 
         }}>
-          Username
           <input 
             type="text" 
             value={username} 
             onChange={(e) => setUsername(e.target.value)} 
-            placeholder="Enter your username" 
+            placeholder="Username" 
             style={{ 
               width: '100%', 
               padding: '10px', 
@@ -63,19 +62,17 @@ const LoginPage = () => {
           color: 'white', 
           fontWeight: 'bold' 
         }}>
-          Password
           <input 
             type="password" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
-            placeholder="Enter your password" 
+            placeholder="Password" 
             style={{ 
               width: '100%', 
               padding: '10px', 
               borderRadius: '8px', 
               border: '2px solid transparent', 
               borderColor: 'indigo', 
-              marginTop: '10px',
               marginBottom: '10px', 
               backgroundColor: 'black', 
               color: 'white', 

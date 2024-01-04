@@ -4,7 +4,9 @@ import Navbar from '@/components/Navbar';
 import Link from 'next/link';
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
-
+import FAQs from '@/components/FAQs';
+import Footer from '@/components/Footer';
+import AboutUs from '@/components/AboutUs';
 
 const Home = () => {
   return (
@@ -70,6 +72,9 @@ const Home = () => {
       </div>
       </motion.div>
       </div>
+      <AboutUs/>
+      <FAQs/>
+      <Footer/>
      
     </div>
   );
