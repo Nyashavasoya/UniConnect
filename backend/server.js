@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const cookieParser = require("cookie-parser");
 const {connectDatabase} = require("./config/database");
-// const cors = require('cors');
+const corsOptions = require('./middlewares/corsOptions');
+
 
 if(process.env.NODE_ENV !== "production")
 {
@@ -13,7 +15,7 @@ require('dotenv').config();
 //middleswares 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 // app.use(cookieParser);
 
 //importing routes 
@@ -24,9 +26,8 @@ const user = require("./routes/user");
 
 //using routes 
 //post
-app.use("",cookieParser(),post);
-// user
-app.use("",user);
+app.use("/api",post);
+app.use("/api",user);
 
 app.get("/test",(req,res)=>{
     res.status(201).json({
@@ -48,9 +49,10 @@ async function query(data) {
 	return result;
 }
 app.post("/verify",async(req,res)=>{
-    const {institute,ocrText} = req.body;
+	const {institute,ocrText} = req.body;
     const formattedText = ocrText.replace(/\s*\n\s*/g, '\n').replace(/^\s+|\s+$/g, '').replace(/\s{2,}/g, ' ');
     const firstHalf = formattedText.substring(0, Math.ceil(formattedText.length / 2));
+	console.log("hii");
     const response = await query({"inputs": {
 		"source_sentence": firstHalf,
 		"sentences": [

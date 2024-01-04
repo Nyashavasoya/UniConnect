@@ -2,26 +2,32 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
+import {useRouter} from 'next/navigation'
+
 
 const LoginPage = () => {
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const Login = async () => {
+  const Login = async (e) => {
     e.preventDefault();
+    
 
    try {
-    const response = await axios.post('http://localhost:4000/login', {
-      username: username, password: password
+    const response = await axios.post('http://localhost:4000/api/login', {
+      name: username, password: password
     })
-    if(response.status === 400 || username){
+    if(response.status === 400){
       window.alert("Invalid Username or Password");
       console.log("Invalid Username or Password");
     }
+    console.log(response.data);
    }
    catch(err) {
     console.log(err);
    }
+   router.push('/Posts')
   };
 
   return (
@@ -29,7 +35,7 @@ const LoginPage = () => {
       backgroundSize: 'cover' }}>
         <div className='backdrop-blur-sm  bg-black/70' style={{ width: '400px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
           <h1 style={{ textAlign: 'center', marginBottom: '20px', color: 'white', fontSize: '48px', fontWeight: 'bold' }}>Sign In</h1>
-        <form method='POST'>
+        <div>
         <label style={{ 
           display: 'block', 
           marginBottom: '8px', 
@@ -97,7 +103,7 @@ const LoginPage = () => {
         >
           Sign In
         </button>
-        </form>
+        </div>
         <div style={{ 
           marginTop: '15px', 
           textAlign: 'center' , 

@@ -3,18 +3,20 @@ const User = require("../models/User");
 exports.register = async (req, res) => {
   try {
     const { name, email, password, Institute } = req.body;
+    console.log(name , email); // safsdaf
     let user = await User.findOne({ email });
     if (user)
-      return res
+      {return res
         .status(400)
-        .send({ success: false, message: "User already exists" });
+        .send({ success: false, message: "User already exists" });}
+    console.log("new user");
     user = await User.create({
       name,
       email,
       password,
-      avatar: { public_id: "sample_id", url: "sample_url" },
       Institute,
     });
+    console.log("user created",user);
 
     const registerToken = await user.generateToken(); // Fix: Use user instance here
     const options = {
@@ -39,9 +41,9 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, password } = req.body;
 
-    const user = await User.findOne({ email }).select("+password");
+    const user = await User.findOne({ name }).select("+password");
 
     if (!user) {
       return res.status(400).json({
