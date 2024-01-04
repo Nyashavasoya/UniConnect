@@ -3,37 +3,45 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import UploadButtonComponent from '../_components/uploadButton';
+import {useRouter} from 'next/navigation';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [institute, setInstitute] = useState('');
 
+  const router = useRouter();
 
-
-  const handleSignup = async () => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    console.log("hii register");
     try{
-      const response = await axios.post('http://localhost:4000/register', {
-        username: username, email: email, password: password, institute: institute
+      const response = await axios.post('http://localhost:4000/api/register', {
+        name: username, email: email, password: password, Institute: institute
       })
       if(response.status === 400 ){
         window.alert("User already exists");
         console.log("user already exists");
       }
+      console.log(response.data);
     }
     catch (err){
       console.log(err);
     }
+    router.push('/LoginPage')
   };
 
+  // const handleRegister = async () =>{
+  //   console.log("hii register");
+  //   e.preventDefault();
+  // }
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',   background: `url('/WallP.jpg')`,
     backgroundSize: 'cover' }}>
       <div className='backdrop-blur-xl  bg-black/70' style={{ width: '400px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
         <h1 style={{ textAlign: 'center', marginBottom: '20px', color: 'white', fontSize: '48px', fontWeight: 'bold' }}>Sign Up</h1>
 
-       <form method='POST'>
+       <div>
         <label style={{ display: 'block', marginBottom: '20px', color: 'white', fontWeight: 'bold' }}>
           Username 
           <input
@@ -148,7 +156,7 @@ const Register = () => {
             Login
           </Link>
         </div>
-        </form>
+        </div>
       </div>
     </div>
   );

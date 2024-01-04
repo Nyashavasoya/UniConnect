@@ -10,19 +10,12 @@ exports.createPost = async (req,res) => {
                 public_id:"req.body.public_id",
                 url:"req.body.url"
             },
-            likes : 0,
-            dislikes : 0,
+            
 
-            // user: req.User._id,
         };
         const post = await Post.create(newPostData);
 
-        // const user = await User.findById(req.User._id);
-
-        // user.posts.push(post._id);
-
-        // await user.save();
-
+        console.log("Post created");
         res.status(201).json({
             success:true,
             post,

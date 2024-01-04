@@ -10,8 +10,12 @@ export default function UploadButtonComponent(props) {
   const [verificationStatus , SetVerificationStatus] = useState(false)
   const [ocrText,setOcrText] = useState('');
   const [status, setStatus] = useState('')
-  const verify = async()=>{
-     const response = await axios.post("http://localhost:4000/verify",{ institute : props.institute , ocrText});
+  const verify = async(text)=>{
+    console.log("hii");
+    console.log(text);
+    
+     const response = await axios.post("http://localhost:4000/verify",{ institute : props.institute , ocrText : text});
+    // const response = await axios.get("http://localhost:4000/test");
      setStatus(response.data.message)
   }
   return (
@@ -29,7 +33,7 @@ export default function UploadButtonComponent(props) {
           ).then(async({ data: { text } }) => {
             console.log(text.toLowerCase());
             setOcrText(text.toLowerCase())
-            const response = await verify();
+            const response = await verify(text.toLowerCase());
             console.log(response)
             SetVerificationStatus(false)
           })

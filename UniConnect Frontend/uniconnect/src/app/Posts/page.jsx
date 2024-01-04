@@ -15,31 +15,7 @@ const Posts = () => {
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const [posts, setPosts] = useState([
-    {
-      username: '60c8ce847857f52250e4f2e1',
-      caption: 'This is a sample post caption.',
-      image: {
-        public_id: 'sample_public_id',
-        url: 'https://example.com/sample_image.jpg',
-      },
-      createdAt: new Date(),
-      likes: 0,
-      dislikes: 0,
-      comments: ['Comment 1', 'Comment 2'],
-    }, {
-      username: 'abcd',
-      caption: 'This is a sample post caption 2.',
-      image: {
-        public_id: 'sample_public_id',
-        url: 'https://example.com/sample_image.jpg',
-      },
-      createdAt: new Date(),
-      likes: 0,
-      dislikes: 0,
-      comments: ['Comment 1 of second post', 'Comment 2 of second post'],
-    }
-  ]);
+  const [posts, setPosts] = useState([]);
 
 
 
@@ -53,7 +29,7 @@ const Posts = () => {
   }, []);
 
   const handleLike = async (postId) => {
-    const response = await axios.get(`http://localhost:4000/post/${postId}/like`)
+    const response = await axios.get(`http://localhost:4000/api/post/${postId}/like`)
     if(response.ok){
       getPosts();
     }
@@ -63,7 +39,7 @@ const Posts = () => {
   };
 
   const handleDislike = async (postId) => {
-    const response = await axios.get(`http://localhost:4000/post/${postId}/dislike`);
+    const response = await axios.get(`http://localhost:4000/api/post/${postId}/dislike`);
 
     if (response.ok) {
       getPosts();
@@ -83,7 +59,7 @@ const Posts = () => {
   const handleConfirmLogout = async () => {
     setShowPopup(false);
    try{
-    const response = await axios.get('http://localhost:4000/logout');
+    const response = await axios.get('http://localhost:4000/api/logout');
    }
    catch(err){
     console.log(err);
@@ -121,7 +97,7 @@ const Posts = () => {
           Posts
         </div>
        </div>
-        {posts.map((post, index) => (
+        {posts ? (posts.map((post) => (
            <div key={post._id} className="border-b border-white py-10">
              <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
               <p className="text-base mb-4">{post.caption}</p>
@@ -137,7 +113,7 @@ const Posts = () => {
                       </div>
                        </div>
                         </div>
-                         ))}
+                         ))) : (<div>NO posts</div>)}
                           </div>
         </div>
 

@@ -12,11 +12,11 @@ const NewPost = () => {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-  
-      const response = await axios.post('http://localhost:4000/post/upload', {
+      console.log("hii login");
+      const response = await axios.post('http://localhost:4000/api/post/upload', {
           title: title,
-          description: description,
-          file: file
+          caption: description,
+          image: file
       })
       console.log("response", response)
       setTitle('');
