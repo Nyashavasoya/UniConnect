@@ -4,6 +4,7 @@ const User = require("../models/User");
 exports.createPost = async (req,res) => {
     try {
         const newPostData = {
+            title : req.body.title,
             caption : req.body.caption,
             image:{
                 public_id:"req.body.public_id",
