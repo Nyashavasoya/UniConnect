@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Search from './SearchBar';
 import Post from './Post';
-import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from 'next/navigation';
 
 const SearchPage = ({ posts }) => {
@@ -24,7 +23,7 @@ const SearchPage = ({ posts }) => {
   return (
     <div className="container mx-auto mt-8">
             <div>
-                   <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => router.push('/Posts')}>Home Page</button>
+                   <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" onClick={() => router.back()}>Return</button>
             </div>
         <div className="flex flex-row justify-center">
             <div>

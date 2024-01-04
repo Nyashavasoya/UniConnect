@@ -16,7 +16,7 @@ const Navbar = () => {
         <Link className="hover:text-indigo-700 md:mr-12 md:my-0 my-12 font-semibold text-lg " href="/faqs">
         FAQs
         </Link>
-        <Link className="hover:text-indigo-700 md:mr-12 md:my-0 my-12 font-semibold text-lg " href="/check-uni">
+        <Link className="hover:text-indigo-700 md:mr-12 md:my-0 my-12 font-semibold text-lg " href="/Search">
           Check your Uni
         </Link>
 

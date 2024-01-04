@@ -30,7 +30,7 @@ const Register = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '120vh',   background: `url('/registerback.png')`,
     backgroundSize: 'cover' }}>
-      <div className='backdrop-blur-xl  bg-black/70' style={{ width: '600px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
+      <div className='backdrop-blur-xl  bg-black/70' style={{ width: '400px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
         <h1 style={{ textAlign: 'center', marginBottom: '20px', color: 'white', fontSize: '48px', fontWeight: 'bold' }}>Sign Up</h1>
 
        <form method='POST'>

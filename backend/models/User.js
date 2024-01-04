@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please enter name"],
+    unique : [true,"please select unique username"]
   },
   avatar: {
     public_id: String,

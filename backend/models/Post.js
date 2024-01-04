@@ -25,6 +25,7 @@ const postSchema = new mongoose.Schema({
     },
     comments:[
         {
+            user: mongoose.Schema.Types.ObjectId,
             type:String,
             required:true,
         },
