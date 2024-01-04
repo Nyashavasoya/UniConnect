@@ -14,11 +14,10 @@ const Post = ({post}) => {
       return;
     }
 
-    const response = await axios(`http://localhost:4000/post/${postId}/comment`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ comment: newComment }),
-    });
+    const response = await axios.post(`http://localhost:4000/post/${postId}/comment`, {
+       comment: newComment
+   });
+    
 
     if (response.ok) {
       getPosts();
@@ -29,9 +28,7 @@ const Post = ({post}) => {
   };
 
   const handleLike = async (postId) => {
-    const response = await fetch(`http://localhost:4000/post/${postId}/like`, {
-      method: 'GET',
-    });
+    const response = await axios.get(`http://localhost:4000/post/${postId}/like`);
 
     if (response.ok) {
       getPosts();
@@ -41,9 +38,7 @@ const Post = ({post}) => {
   };
 
   const handleDislike = async (postId) => {
-    const response = await fetch(`http://localhost:4000/post/${postId}/dislike`, {
-      method: 'GET',
-    });
+    const response = await axios.get(`http://localhost:4000/post/${postId}/dislike`);
 
     if (response.ok) {
       getPosts();
