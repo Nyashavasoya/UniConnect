@@ -6,28 +6,94 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-
-
   const Login = () => {
-
     console.log('Logging in with:', { username, password });
-
+    // Add your login logic here
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <div style={{ width: '400px', padding: '30px', border: '1px solid #ccc', borderRadius: '12px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Sign In</h2>
-        <label style={{ display: 'block', marginBottom: '15px' }}>
-          Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter your username" style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #aaa', marginBottom: '10px' }} />
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',   background: `url('/registerback.png')`,
+      backgroundSize: 'cover' }}>
+        <div className='backdrop-blur-sm  bg-black/70' style={{ width: '400px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
+          <h1 style={{ textAlign: 'center', marginBottom: '20px', color: 'white', fontSize: '48px', fontWeight: 'bold' }}>Sign In</h1>
+        <label style={{ 
+          display: 'block', 
+          marginBottom: '15px', 
+          color: 'white', 
+          fontWeight: 'bold' 
+        }}>
+          Username
+          <input 
+            type="text" 
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} 
+            placeholder="Enter your username" 
+            style={{ 
+              width: '100%', 
+              padding: '10px', 
+              borderRadius: '8px', 
+              border: '2px solid transparent', 
+              borderColor: 'indigo', 
+              marginTop: '10px',
+              marginBottom: '10px', 
+              backgroundColor: 'black', 
+              color: 'white', 
+              outline: 'none', 
+              transition: 'border-color 0.3s',
+            }} 
+          />
         </label>
-        <label style={{ display: 'block', marginBottom: '20px' }}>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" style={{ width: '100%', padding: '10px', borderRadius: '8px', border: '1px solid #aaa', marginBottom: '10px' }} />
+        <label style={{ 
+          display: 'block', 
+          marginBottom: '20px', 
+          color: 'white', 
+          fontWeight: 'bold' 
+        }}>
+          Password
+          <input 
+            type="password" 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            placeholder="Enter your password" 
+            style={{ 
+              width: '100%', 
+              padding: '10px', 
+              borderRadius: '8px', 
+              border: '2px solid transparent', 
+              borderColor: 'indigo', 
+              marginTop: '10px',
+              marginBottom: '10px', 
+              backgroundColor: 'black', 
+              color: 'white', 
+              outline: 'none', 
+              transition: 'border-color 0.3s',
+            }} 
+          />
         </label>
-        <button onClick={Login} style={{ backgroundColor: '#3498db', color: '#fff', padding: '12px', borderRadius: '8px', border: 'none', cursor: 'pointer', width: '100%', fontSize: '16px' }}>Sign In</button>
-        <div style={{ marginTop: '15px', textAlign: 'center' , display: 'flex', justifyContent: 'space-between' }}>
+        <button 
+          onClick={Login} 
+          style={{ 
+            backgroundColor: 'indigo', 
+            color: 'white', 
+            padding: '12px', 
+            borderRadius: '8px', 
+            border: 'none', 
+            cursor: 'pointer', 
+            width: '100%', 
+            fontSize: '16px', 
+            fontWeight: 'bold',
+          }} 
+        >
+          Sign In
+        </button>
+        <div style={{ 
+          marginTop: '15px', 
+          textAlign: 'center' , 
+          color: 'white', 
+          fontWeight: 'bold',
+          display: 'flex', 
+          justifyContent: 'space-between' 
+        }}>
           <Link href="/LandingPage">Forgot Password</Link>
           <Link href="/Register">Register</Link>
         </div>
