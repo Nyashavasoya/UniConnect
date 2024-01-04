@@ -1,4 +1,3 @@
-// NewPost.js
 "use client"
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -13,12 +12,12 @@ const NewPost = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
   
-    //   const response = await axios.post('/post/upload', {
-    //       title: title,
-    //       description: description,
-    //       file: file
-    //   })
-    //   console.log("response", response)
+      const response = await axios.post('/post/upload', {
+          title: title,
+          description: description,
+          file: file
+      })
+      console.log("response", response)
       setTitle('');
       setDescription('');
       setFile(null);
