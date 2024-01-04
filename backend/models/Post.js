@@ -5,6 +5,11 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'User',
     },
+    title :{
+        type : String,
+        required : true,
+    },
+
     caption : String,
     
     image:{
@@ -17,11 +22,11 @@ const postSchema = new mongoose.Schema({
     },
     likes:{
         type:Number,
-        required:true,
+        default : 0,
     },
     dislikes:{
         type: Number,
-        required:true,
+        default : 0,
     },
     comments:[
         {
