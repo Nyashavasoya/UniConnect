@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
-
+import UploadButtonComponent from '../_components/uploadButton';
 const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,22 +13,22 @@ const Register = () => {
 
   const handleSignup = async () => {
     e.preventDefault();
-    try{
-      const response = await axios.post('/register', {
-        username: username, email: email, password: password, institute: institute
-      })
-      if(response.status === 400 ){
-        window.alert("User already exists");
-        console.log("user already exists");
-      }
-    }
-    catch (err){
-      console.log(err);
-    }
+    // try{
+    //   const response = await axios.post('/register', {
+    //     username: username, email: email, password: password, institute: institute
+    //   })
+    //   if(response.status === 400 ){
+    //     window.alert("User already exists");
+    //     console.log("user already exists");
+    //   }
+    // }
+    // catch (err){
+    //   console.log(err);
+    // }
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',   background: `url('/registerback.png')`,
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh',   background: `url('/WallP.jpg')`,
     backgroundSize: 'cover' }}>
       <div className='backdrop-blur-xl  bg-black/70' style={{ width: '400px', padding: '30px', border: '1px solid indigo', borderRadius: '12px', boxShadow: '0px 0px 10px indigo', }}>
         <h1 style={{ textAlign: 'center', marginBottom: '20px', color: 'white', fontSize: '48px', fontWeight: 'bold' }}>Sign Up</h1>
@@ -60,7 +60,7 @@ const Register = () => {
           Email 
           <input
             type="text"
-            value={username}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             style={{
@@ -104,7 +104,7 @@ const Register = () => {
               Institute 
               <input
                 type="text"
-                value={username}
+                value={institute}
                 onChange={(e) => setInstitute(e.target.value)}
                 placeholder="Enter your Institute Name"
                 style={{
@@ -122,6 +122,10 @@ const Register = () => {
                 }}
               />
             </label>
+            <div>
+            <h2>Enter your college id card</h2>
+            <UploadButtonComponent institute = {institute}/>
+          </div>
         <button className='accent-indigo-500'
           onClick={handleSignup}
           style={{
@@ -139,6 +143,7 @@ const Register = () => {
           Sign Up
         </button>
         <div style={{ marginTop: '15px', textAlign: 'center' , color: 'white', fontWeight: 'bold'}}>
+          
           <Link href="/LoginPage">
             Login
           </Link>

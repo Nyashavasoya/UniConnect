@@ -10,10 +10,10 @@ const Navbar = () => {
         <h1 className="text-3xl font-bold">UniConnect</h1>
       </div>
       <div className="flex items-center space-x-8">
-        <Link className="hover:text-indigo-700  md:my-0 my-12 font-semibold text-lg " href="/about">
+        <Link className="hover:text-indigo-700  md:my-0 my-12 font-semibold text-lg " href="/AboutUs">
         About Us
         </Link>
-        <Link className="hover:text-indigo-700 md:mr-12 md:my-0 my-12 font-semibold text-lg " href="/faqs">
+        <Link className="hover:text-indigo-700 md:mr-12 md:my-0 my-12 font-semibold text-lg " href="/FAQs">
         FAQs
         </Link>
         <Link className="hover:text-indigo-700 md:mr-12 md:my-0 my-12 font-semibold text-lg " href="/Search">
