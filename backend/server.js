@@ -27,7 +27,7 @@ const user = require("./routes/user");
 //using routes 
 //post
 app.use("/api",post);
-app.use("/api",user);
+app.use("/api",cookieParser(),user);
 
 app.get("/test",(req,res)=>{
     res.status(201).json({

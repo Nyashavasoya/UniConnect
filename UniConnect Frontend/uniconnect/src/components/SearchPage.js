@@ -32,7 +32,9 @@ const SearchPage = ({ posts }) => {
         </div>
       {filteredPosts && filteredPosts.length > 0 ? (
             filteredPosts.map((post) => (
-            <Post post={post} key={post._id} />
+              <div key={post._id} className="ml-4"> {/* Add left margin */}
+              <Post post={post} />
+            </div>
             ))
         ) : (
             <div className='text-white text-center space-y-30'>
