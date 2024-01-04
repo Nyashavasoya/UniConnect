@@ -20,7 +20,7 @@ const Navbar = () => {
           Check your Uni
         </Link>
 
-        <Link className="bg-indigo-500 text-white font-semibold text-lg px-4 py-2 md:mr-16 rounded hover:bg-indigo-700 transition duration-300" href="/get-started">
+        <Link className="bg-indigo-500 text-white font-semibold text-lg px-4 py-2 md:mr-16 rounded hover:bg-indigo-700 transition duration-300" href="/LoginPage">
          Get Started
         </Link>
       </div>
