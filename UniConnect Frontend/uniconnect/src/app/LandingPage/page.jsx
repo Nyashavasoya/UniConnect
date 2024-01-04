@@ -1,6 +1,8 @@
 // LandingPage.js
 import React from 'react';
 import Navbar from './Navbar';
+import Link from 'next/link';
+
 
 const LandingPage = () => {
   return (
@@ -12,7 +14,9 @@ const LandingPage = () => {
           <h1 className="text-8xl font-bold mb-4">Connect With </h1> <h1 className=' text-8xl font-bold mb-4 text-indigo-500'>UniConnect</h1>
           <p className="text-gray-500 text-xl font-semibold">Lodge your grievances and gain support from your peers!</p><br/><br/><br/>
            <div className="flex space-x-8">
-            <button className="bg-indigo-500 text-white px-6 py-3 rounded-full">Get Started</button>
+           <Link href="/LoginPage">
+           <button className="bg-indigo-500 text-white px-6 py-3 rounded-full">
+              Get Started</button></Link> 
             <button className="border border-indigo-500 text-indigo-500 px-6 py-3 rounded-full">View your Uni</button>
           </div>
         </div>
