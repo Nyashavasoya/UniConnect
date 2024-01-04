@@ -31,8 +31,9 @@ const Posts = () => {
   }, []);
 
   const handleLike = async (postId) => {
+    console.log(postId);
     const response = await axios.get(`http://localhost:4000/api/post/${postId}/like`)
-    if(response.ok){
+    if(response){
       getPosts();
     }
     else{
@@ -43,7 +44,7 @@ const Posts = () => {
   const handleDislike = async (postId) => {
     const response = await axios.get(`http://localhost:4000/api/post/${postId}/dislike`);
 
-    if (response.ok) {
+    if (response) {
       getPosts();
     } else {
       alert('Error disliking post');
@@ -101,11 +102,13 @@ const Posts = () => {
        </div>
        {posts.map((post, index) => (
   <div key={post._id} className="border border-white p-6 mb-6">
-    <h1 className="text-4xl font-semibold mb-2">{post.username}</h1>
+    <h1 className="text-4xl font-semibold mb-2">{post.title}</h1>
     <p className="text-base mb-4">{post.caption}</p>
     <div className="flex items-center space-x-10">
       <GrLike fontSize={24} onClick={() => handleLike(post._id)} />
+      <span>{post.likes}</span>
       <GrDislike fontSize={24} onClick={() => handleDislike(post._id)} />
+      <span>{post.dislikes}</span>
     </div>
     <div className="mt-6">
       <div className="flex justify-start">
