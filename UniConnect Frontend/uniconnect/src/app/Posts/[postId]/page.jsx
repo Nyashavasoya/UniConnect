@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   const { params } = context;
   const postId = params.postId;
 
-  const apiUrl = `/api/Posts/${postId}`;
+  const apiUrl = `http://localhost:4000/post/${postId}`;
   const response = await fetch(apiUrl);
 
   if (!response.ok) {

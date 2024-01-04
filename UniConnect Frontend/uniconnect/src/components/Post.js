@@ -1,4 +1,4 @@
-// components/Post.js
+
 "use client"
 import React, { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -14,8 +14,8 @@ const Post = ({post}) => {
       return;
     }
 
-    const response = await fetch(`/api/Posts/${postId}/comment`, {
-      method: 'PUT',
+    const response = await axios(`http://localhost:4000/post/${postId}/comment`, {
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ comment: newComment }),
     });
@@ -29,8 +29,8 @@ const Post = ({post}) => {
   };
 
   const handleLike = async (postId) => {
-    const response = await fetch(`/api/Posts/${postId}/like`, {
-      method: 'PUT',
+    const response = await fetch(`http://localhost:4000/post/${postId}/like`, {
+      method: 'GET',
     });
 
     if (response.ok) {
@@ -41,8 +41,8 @@ const Post = ({post}) => {
   };
 
   const handleDislike = async (postId) => {
-    const response = await fetch(`/api/Posts/${postId}/dislike`, {
-      method: 'PUT',
+    const response = await fetch(`http://localhost:4000/post/${postId}/dislike`, {
+      method: 'GET',
     });
 
     if (response.ok) {

@@ -53,8 +53,8 @@ const Posts = () => {
   }, []);
 
   const handleLike = async (postId) => {
-    const response = await axios(`/api/posts/${postId}/like`, {
-      method: "PUT",
+    const response = await axios(`http://localhost:4000/post/${postId}/like`, {
+      method: "GET",
     })
     if(response.ok){
       getPosts();
@@ -65,8 +65,8 @@ const Posts = () => {
   };
 
   const handleDislike = async (postId) => {
-    const response = await axios(`/api/Posts/${postId}/dislike`, {
-      method: 'PUT',
+    const response = await axios(`http://localhost:4000/post/${postId}/dislike`, {
+      method: 'GET',
     });
 
     if (response.ok) {
@@ -84,8 +84,15 @@ const Posts = () => {
     setShowPopup(false);
   }
 
-  const handleConfirmLogout = () => {
+  const handleConfirmLogout = async () => {
     setShowPopup(false);
+   try{
+    const response = await axios.get('http://localhost:4000/logout');
+   }
+   catch(err){
+    console.log(err);
+   }
+
     router.push('/');
   }
 

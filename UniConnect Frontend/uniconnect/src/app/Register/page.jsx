@@ -13,18 +13,18 @@ const Register = () => {
 
   const handleSignup = async () => {
     e.preventDefault();
-    // try{
-    //   const response = await axios.post('/register', {
-    //     username: username, email: email, password: password, institute: institute
-    //   })
-    //   if(response.status === 400 ){
-    //     window.alert("User already exists");
-    //     console.log("user already exists");
-    //   }
-    // }
-    // catch (err){
-    //   console.log(err);
-    // }
+    try{
+      const response = await axios.post('http://localhost:4000/register', {
+        username: username, email: email, password: password, institute: institute
+      })
+      if(response.status === 400 ){
+        window.alert("User already exists");
+        console.log("user already exists");
+      }
+    }
+    catch (err){
+      console.log(err);
+    }
   };
 
   return (
