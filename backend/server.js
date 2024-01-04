@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cookieParser = require("cookie-parser");
 const {connectDatabase} = require("./config/database");
+// const cors = require('cors');
 
 if(process.env.NODE_ENV !== "production")
 {
@@ -12,6 +13,7 @@ require('dotenv').config();
 //middleswares 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+// app.use(cors(corsOptions));
 // app.use(cookieParser);
 
 //importing routes 

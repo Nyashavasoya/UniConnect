@@ -17,18 +17,18 @@ exports.register = async (req, res) => {
       Institute,
     });
 
-    const token = await user.generateToken(); // Fix: Use user instance here
+    const registerToken = await user.generateToken(); // Fix: Use user instance here
     const options = {
       expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
       httpOnly:true,
     }
     res
       .status(201)
-      .cookie("token", token, options)
+      .cookie("registerToken", registerToken, options)
       .json({
         success: true,
         user,
-        token,
+        registerToken,
       });
   } catch (error) {
     res.status(500).json({
@@ -60,18 +60,18 @@ exports.login = async (req, res) => {
       });
     }
 
-    const token = await user.generateToken(); // Fix: Use user instance here
+    const loginToken = await user.generateToken(); // Fix: Use user instance here
     const options = {
       expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000),
       httpOnly:true,
     }
     res
       .status(200)
-      .cookie("token", token, options)
+      .cookie("loginToken", loginToken, options)
       .json({
         success: true,
         user,
-        token,
+        loginToken,
       });
   } catch (error) {
     res.status(500).json({
@@ -80,3 +80,15 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.logout = async(req,res) => {
+  try {
+    res.status(201).cookie("logoutToken",null,{ expires : new Date(Date.now()),httpOnly:true})
+    .json({
+      success : true,
+      message :"Logged out!"
+    })
+  } catch (error) {
+    
+  }
+}

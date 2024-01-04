@@ -4,6 +4,7 @@ const User = require("../models/User");
 exports.createPost = async (req,res) => {
     try {
         const newPostData = {
+            title : req.body.title,
             caption : req.body.caption,
             image:{
                 public_id:"req.body.public_id",
@@ -12,11 +13,11 @@ exports.createPost = async (req,res) => {
             likes : 0,
             dislikes : 0,
 
-            // user: req.User._id,
+            // user: req.user._id,
         };
         const post = await Post.create(newPostData);
 
-        // const user = await User.findById(req.User._id);
+        // const user = await User.findById(req.user);
 
         // user.posts.push(post._id);
 

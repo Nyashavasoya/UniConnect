@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const cookieParser = require("cookie-parser");
+const corsOptions = require('./config/corsOptions');
 
 if(process.env.NODE_ENV !== "production")
 {
@@ -11,6 +13,7 @@ if(process.env.NODE_ENV !== "production")
 //middleswares 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors(corsOptions));
 // app.use(cookieParser);
 
 //importing routes 
