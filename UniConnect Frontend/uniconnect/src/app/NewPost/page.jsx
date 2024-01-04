@@ -1,6 +1,7 @@
 // NewPost.js
 "use client"
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const NewPost = () => {
   const [title, setTitle] = useState('');
@@ -10,16 +11,12 @@ const NewPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create a FormData object to handle file uploads
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('description', description);
-    formData.append('file', file);
-
-    // Use formData in your API request
-    // const response = await axios.post('/api/posts', formData);
-
-    // Reset form fields
+    const response = await axios.post('/post/upload', {
+        title: title,
+        description: description,
+        file: file
+    })
+    console.log("response", response);
     setTitle('');
     setDescription('');
     setFile(null);
@@ -33,7 +30,7 @@ const NewPost = () => {
         Create Post
       </h2>
     </div>
-    <form className="space-y-4" onSubmit={handleSubmit}>
+    <form method='POST' className="space-y-4" onSubmit={handleSubmit}>
       <input type="hidden" name="remember" defaultValue="true" />
       <div className="rounded-md shadow-sm -space-y-px">
         <div className="mb-2">
@@ -93,7 +90,7 @@ const NewPost = () => {
             <div className="flex text-sm text-gray-600">
               <label
                 htmlFor="file-upload"
-                className="relative cursor-pointer bg-black rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500" > <span>Upload a file</span> <input id="file-upload" name="file-upload" type="file" className="sr-only" onChange={(e) => setFile(e.target.files[0])} /> </label> <p className="pl-1 text-white">or drag and drop</p> </div> <p className="text-xs text-white">PNG, JPG, GIF up to 10MB</p> </div> </div> </div>
+                className="relative cursor-pointer bg-black rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500" > <span>Upload a file</span> <input id="file-upload" name="file-upload" type="file" value={file} className="sr-only" onChange={(e) => setFile(e.target.files[0])} /> </label> <p className="pl-1 text-white">or drag and drop</p> </div> <p className="text-xs text-white">PNG, JPG, GIF up to 10MB</p> </div> </div> </div>
                   <div>
                     <button
                     type="submit"
