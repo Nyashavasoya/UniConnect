@@ -53,9 +53,7 @@ const Posts = () => {
   }, []);
 
   const handleLike = async (postId) => {
-    const response = await axios(`http://localhost:4000/post/${postId}/like`, {
-      method: "GET",
-    })
+    const response = await axios.get(`http://localhost:4000/post/${postId}/like`)
     if(response.ok){
       getPosts();
     }
@@ -65,9 +63,7 @@ const Posts = () => {
   };
 
   const handleDislike = async (postId) => {
-    const response = await axios(`http://localhost:4000/post/${postId}/dislike`, {
-      method: 'GET',
-    });
+    const response = await axios.get(`http://localhost:4000/post/${postId}/dislike`);
 
     if (response.ok) {
       getPosts();

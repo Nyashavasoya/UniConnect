@@ -1,5 +1,6 @@
 import { useRouter } from 'next/navigation';
 import Post from '../../components/Post';
+import axios from 'axios';
 
 const PostPage = ({ post }) => {
   const router = useRouter();
@@ -16,21 +17,23 @@ export async function getServerSideProps(context) {
   const postId = params.postId;
 
   const apiUrl = `http://localhost:4000/post/${postId}`;
-  const response = await fetch(apiUrl);
 
-  if (!response.ok) {
+  try {
+    const response = await axios.get(apiUrl);
+    const post = response.data;
+
+    return {
+      props: {
+        post,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching post:', error);
+
     return {
       notFound: true,
     };
   }
-
-  const post = await response.json();
-
-  return {
-    props: {
-      post,
-    },
-  };
 }
 
 export default PostPage;
