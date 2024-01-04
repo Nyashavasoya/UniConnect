@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const cookieParser = require("cookie-parser");
-const corsOptions = require('./config/corsOptions');
+const corsOptions = require('./middlewares/corsOptions');
 
 if(process.env.NODE_ENV !== "production")
 {
