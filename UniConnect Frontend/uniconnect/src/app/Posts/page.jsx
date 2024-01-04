@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation';
 import CustomPopup from '@/components/customPop';
 import { FaSearch } from "react-icons/fa";
 import { FaRegSquarePlus } from "react-icons/fa6";
+import { GrLike } from "react-icons/gr";
+import { GrDislike } from "react-icons/gr";
 
 
 const Posts = () => {
@@ -121,23 +123,25 @@ const Posts = () => {
           Posts
         </div>
        </div>
-        {posts.map((post, index) => (
-           <div key={post._id} className="border-b border-white py-10">
-             <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
-              <p className="text-base mb-4">{post.caption}</p>
-               <div className="flex items-center space-x-10"> 
-               <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleLike(post._id)} > Like </button>
-                <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded" onClick={() => handleDislike(post._id)} > Dislike </button>
-                 </div>
-                  <div className="mt-4">
-                   <div className="flex justify-start">
-                     <Link href={`/Posts/${post._id}`}>
-                     <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"> Comment </button>
-                      </Link>
-                      </div>
-                       </div>
-                        </div>
-                         ))}
+       {posts.map((post, index) => (
+  <div key={post._id} className="border border-white p-6 mb-6">
+    <h1 className="text-4xl font-semibold mb-2">{post.username}</h1>
+    <p className="text-base mb-4">{post.caption}</p>
+    <div className="flex items-center space-x-10">
+      <GrLike fontSize={24} onClick={() => handleLike(post._id)} />
+      <GrDislike fontSize={24} onClick={() => handleDislike(post._id)} />
+    </div>
+    <div className="mt-6">
+      <div className="flex justify-start">
+        <Link href={`/Posts/${post._id}`}>
+          <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"> Comment </button>
+        </Link>
+      </div>
+    </div>
+  </div>
+))}
+
+
                           </div>
         </div>
 
