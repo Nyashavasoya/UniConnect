@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
 const cookieParser = require("cookie-parser");
-const {connectDatabase} = require("./config/database");
 
 if(process.env.NODE_ENV !== "production")
 {
     require("dotenv").config({"path":"config/config.env"});
 }
-require('dotenv').config();
+
 
 //middleswares 
 app.use(express.json());
@@ -22,17 +21,8 @@ const user = require("./routes/user");
 
 //using routes 
 //post
-app.use("",cookieParser(),post);
-// user
-app.use("",user);
-
-app.get("/test",(req,res)=>{
-    res.status(201).json({
-        message:"Test is working!"
-    })
-});
-
-
+app.use("/api",post);
+app.use("/api",user);
 async function query(data) {
 	const response = await fetch(
 		"https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2",
@@ -56,12 +46,8 @@ app.post("/verify",async(req,res)=>{
 		]
 	}});
     console.log(response);
-    if(response[0] >= 0.7)res.status(200).json({message : "verified"})
+    if(response[0] >= 0.7)res.status(200).json({message : verified})
     else res.status(400).json({message : "not verified"})
     
 })
-
-connectDatabase();
-app.listen(process.env.PORT,()=>{
-    console.log(`Server is running on port ${process.env.PORT}`);
-})
+module.exports = app;
