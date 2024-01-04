@@ -75,7 +75,7 @@ const Posts = () => {
   return (
     <>
 
-<div className="flex h-full">
+<div className="flex h-full bg-black">
 <div className="items-center space-y-10 w-32 min-h-screen flex flex-col right-sidebar-container bg-gray-800 text-white p-4 border-l border-gray-600">
   <Link href="/LoginPage">
     <button className="bg-indigo-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded mb-2">Login</button>
