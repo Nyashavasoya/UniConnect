@@ -17,7 +17,7 @@ useEffect(() => {
 
     
   return (
-    <div>
+    <div className='bg-black' >
       <SearchPage posts={posts}/>
     </div>
   )

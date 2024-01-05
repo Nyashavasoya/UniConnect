@@ -16,11 +16,11 @@ const SearchBar = ({ onSearch }) => {
         placeholder="Search by username..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="border border-gray-300 p-2 mr-2 text-white bg-black w-96"
+        className="border border-gray-300 p-3 mr-2 text-white bg-black w-80"
       />
       <button
         onClick={handleSearch}
-        className="bg-indigo-500 text-white px-4 py-2 rounded"
+        className="bg-indigo-500 text-white p-3 mr-8 ml-4 rounded"
       >
         Search
       </button>

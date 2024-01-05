@@ -43,20 +43,18 @@ const Register = () => {
 
        <div>
         <label style={{ display: 'block', marginBottom: '20px', color: 'white', fontWeight: 'bold' }}>
-          Username 
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
+            placeholder="Username"
             style={{
               width: '100%',
               padding: '10px',
               borderRadius: '8px',
               border: '2px solid transparent ',
               borderColor: 'indigo',
-              marginTop: '10px',
-              marginBottom: '10px',
+              marginBottom: '0px',
               backgroundColor: 'black',
               color: 'white',
               outline: 'none',
@@ -65,20 +63,18 @@ const Register = () => {
           />
         </label>
         <label style={{ display: 'block', marginBottom: '20px', color: 'white', fontWeight: 'bold' }}>
-          Email 
           <input
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder="Email ID"
             style={{
               width: '100%',
               padding: '10px',
               borderRadius: '8px',
               border: '2px solid transparent ',
               borderColor: 'indigo',
-              marginTop: '10px',
-              marginBottom: '10px',
+              marginBottom: '0px',
               backgroundColor: 'black',
               color: 'white',
               outline: 'none',
@@ -87,19 +83,17 @@ const Register = () => {
           />
         </label>
         <label style={{ display: 'block', marginBottom: '20px', color: 'white', fontWeight: 'bold' }}>
-          Password
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
+            placeholder="Password"
             style={{
               width: '100%',
               padding: '10px',
               borderRadius: '8px',
               border: '2px solid transparent',
-              marginTop: '10px',
-              marginBottom: '10px',
+              marginBottom: '2px',
               borderColor: 'indigo',
               backgroundColor: 'black',
               color: 'white',
@@ -109,20 +103,18 @@ const Register = () => {
           />
         </label>
             <label style={{ display: 'block', marginBottom: '20px', color: 'white', fontWeight: 'bold' }}>
-              Institute 
               <input
                 type="text"
                 value={institute}
                 onChange={(e) => setInstitute(e.target.value)}
-                placeholder="Enter your Institute Name"
+                placeholder="Institute Name"
                 style={{
                   width: '100%',
                   padding: '10px',
                   borderRadius: '8px',
                   border: '2px solid transparent ',
                   borderColor: 'indigo',
-                  marginTop: '10px',
-                  marginBottom: '10px',
+                  marginBottom: '0px',
                   backgroundColor: 'black',
                   color: 'white',
                   outline: 'none',
@@ -131,7 +123,7 @@ const Register = () => {
               />
             </label>
             <div>
-            <h2>Enter your college id card</h2>
+            <h2 className='text-gray-500 font-bold'>Add college ID card</h2>
             <UploadButtonComponent institute = {institute}/>
           </div>
         <button className='accent-indigo-500'

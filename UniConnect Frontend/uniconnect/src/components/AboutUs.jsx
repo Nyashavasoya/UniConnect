@@ -10,8 +10,8 @@ const links = [
 
 const stats = [
   { name: 'Years in Operation', value: '8' },
-  { name: 'Projects Completed', value: '150+' },
-  { name: 'Community Events', value: '50+' },
+  { name: 'Organizations reached', value: '150+' },
+  { name: 'Students supported', value: '50+' },
   { name: 'Happy Clients', value: '2000+' },
 ];
 
@@ -27,8 +27,8 @@ const AboutUs = () => {
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">About Us</h2>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-            fugiat veniam occaecat fugiat aliqua.
+          One stop solution for all students! Add your grievances anonymously, and get yourselves
+          a solution. Your smart help for Uni, UniConnect!
           </p>
         </div>
         <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">

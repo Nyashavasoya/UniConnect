@@ -6,9 +6,9 @@ const FAQs = () => {
   const [expandedQuestion, setExpandedQuestion] = useState(null);
 
   const faqs = [
-    { question: 'Where to send the queries related to portal and approval related issues for the approval process 2022-23?', answer: 'A: Institutes are requested to raise queries only through online Grievance Redressal mechanism available on AICTE website under Approval Process 2022-23 quick links. No queries through email will be entertained.' },
-    { question: 'Does AICTE allow Arts and Science Courses in an Institution offering Engineering Courses?', answer: 'A: Conduct of any other Academic Courses (Technical/Non-Technical)... (full answer)' },
-    { question: 'Is it mandatory for an Institution offering Courses in Architecture and Pharmacy to obtain Approval from AICTE?', answer: 'A: In compliance of the order dated 08.11.2019... (full answer)' },
+    { question: 'How does UniConnect ensure the anonymity of users submitting grievances?', answer: 'A: UniConnect takes privacy seriously. When users submit grievances, their identity remains confidential through the use of advanced encryption and secure data storage. Even the platform administrators cannot trace back the submissions to individual users, ensuring a safe space for students to express their concerns without fear of reprisal.' },
+    { question: 'How are the most upvoted grievances prioritized for resolution, and what role does the institute play?', answer: 'A: The grievances on UniConnect are sorted based on upvotes from the student community. The institute is actively involved in addressing the most upvoted posts, creating a collaborative approach to problem-solving. This ensures that the concerns with the most significant impact on the student body are given priority, fostering a responsive and accountable environment within the educational institution.' },
+    { question: 'Can users trust the authenticity of the grievances shared on UniConnect, and how does the platform prevent misuse?', answer: 'A: UniConnect promotes transparency by allowing students to verify the authenticity of grievances through an upvote/downvote system. Users can choose to support or challenge a post, contributing to a self-regulating community. Additionally, the platform employs advanced algorithms and moderation mechanisms to detect and prevent misuse, maintaining the integrity of the platform and ensuring a reliable space for meaningful dialogue and issue resolution.' },
     // Add more FAQs as needed
   ];
 

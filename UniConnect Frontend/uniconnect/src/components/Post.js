@@ -49,7 +49,8 @@ const Post = ({post}) => {
 
 
   return (
-    <><div key={post._id} className="border-b border-white py-10">
+    <div className='bg-black'>
+  <div key={post._id} className="border-b border-white py-10">
           <h3 className="text-xl font-semibold mb-2">{post.username}</h3>
           <p className="text-base mb-4">{post.caption}</p>
           <div className="flex items-center space-x-10">
@@ -81,8 +82,7 @@ const Post = ({post}) => {
               </div>
           </div>
       </div>
-          </>
-   
+      </div>   
   );
 };
 

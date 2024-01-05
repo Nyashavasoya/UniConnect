@@ -73,7 +73,7 @@ const Posts = () => {
 
   return (
     <>
-  <div>
+  <div className='bg-black'>
     <div>
     <nav className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between p-4 bg-black text-white">
       <div className="flex items-center space-x-4">
@@ -96,9 +96,7 @@ const Posts = () => {
     <div className="w-full px-10 min-h-screen">
       <div className="bg-black text-white space-x-10">
        <div className="text-3xl font-bold mb-4 px-10 py-5 flex flex-row justify-between items-center">
-        <div className="text-white">
           Posts
-        </div>
        </div>
        {posts.map((post, index) => (
   <div key={post._id} className="border border-white p-6 mb-6">
